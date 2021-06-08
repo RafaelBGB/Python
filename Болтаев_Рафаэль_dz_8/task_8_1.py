@@ -1,10 +1,12 @@
 import re
 
-user_email = 'someone@geekbrains.ru'
-if user_email.count('@') == 1:
-    parse = re.split(r'@', user_email)
-    result = {'username': parse[0], 'domain': parse[1]}
-else:
-    raise ValueError('Неправельный адрес электронной почты')
 
-print(result)
+def email_parse(email):
+    parse = re.split(r'@', email)
+    if email.count('@') == 1 and parse[1].count('.'):
+        return {'username': parse[0], 'domain': parse[1]}
+    else:
+        raise ValueError('Неправельный адрес электронной почты')
+
+
+print(email_parse('someone@geekbrains.ru'))
